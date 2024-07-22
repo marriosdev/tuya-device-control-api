@@ -2,25 +2,25 @@
 
 ## How to use
 
-1; Install the dependencies.
+### 1 Install the dependencies.
 
 ```shell
 composer install
 ```
 
-2. Configure your credentials in the .env file.
+### 2 Configure your credentials in the .env file.
 
 ```shell
 cp .env.example .env
 ````
 
-3. Run project.
+### 3 Run project.
 
 ```shell
 php -S localhost:8000
 ```
 
-or
+### or
 
 ```shell
 docker-compose up --build
