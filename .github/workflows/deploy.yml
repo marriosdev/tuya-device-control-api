@@ -19,7 +19,7 @@ jobs:
           username: "${{ secrets.SSH_USER }}"
           password: "${{ secrets.SSH_PASS }}"
           source: "."
-          target: "/tuya-app"
+          target: "/home/projetos/tuya-app"
 
       - name: "Build da aplicação"
         uses: appleboy/ssh-action@v1.0.3
@@ -28,5 +28,5 @@ jobs:
           username: "${{ secrets.SSH_USER }}"
           password: ${{ secrets.SSH_PASS }}
           script: |
-            cd /tuya-app
+            cd /tuya-app/.docker
             docker-compose up -d
