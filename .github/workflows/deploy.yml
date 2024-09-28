@@ -6,7 +6,6 @@ on:
 jobs:
   build_deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: "Baixar o código"
         uses: actions/checkout@v4
