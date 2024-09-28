@@ -2,7 +2,7 @@
 
 ## How to use
 
-1; Install the dependencies.
+1. Install the dependencies.
 
 ```shell
 composer install

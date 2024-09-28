@@ -1,0 +1,33 @@
+name: "Deploy para VPS"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Baixar o código"
+        uses: actions/checkout@v4
+      - name: "PHP Composer install"
+        run:  composer install --no-interaction --no-progress --no-suggest --no-dev --ignore-platform-reqs
+
+      - name: "Copiar arquivos para VPS"
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: "${{ secrets.SSH_HOST }}"
+          username: "${{ secrets.SSH_USER }}"
+          pasword: ${{ secrets.SSH_PASS }}
+          source: "."
+          target: "/tuya-app"
+
+      - name: "Build da aplicação"
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: "${{ secrets.SSH_HOST }}"
+          username: "${{ secrets.SSH_USER }}"
+          pasword: ${{ secrets.SSH_PASS }}
+          script: |
+            cd /tuya-app
+            docker-compose up -d
