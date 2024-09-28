@@ -18,7 +18,7 @@ jobs:
         with:
           host: "${{ secrets.SSH_HOST }}"
           username: "${{ secrets.SSH_USER }}"
-          pasword: ${{ secrets.SSH_PASS }}
+          password: "${{ secrets.SSH_PASS }}"
           source: "."
           target: "/tuya-app"
 
@@ -27,7 +27,7 @@ jobs:
         with:
           host: "${{ secrets.SSH_HOST }}"
           username: "${{ secrets.SSH_USER }}"
-          pasword: ${{ secrets.SSH_PASS }}
+          password: ${{ secrets.SSH_PASS }}
           script: |
             cd /tuya-app
             docker-compose up -d
